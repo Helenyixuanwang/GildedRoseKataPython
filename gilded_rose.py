@@ -5,7 +5,8 @@ from item_strategies import (
     NormalItemStrategy,
     AgedBrieStrategy,
     BackstagePassStrategy,
-    SulfurasStrategy
+    SulfurasStrategy,
+    ConjuredStrategy  # Add this import
 )
 
 class GildedRose(object):
@@ -16,7 +17,8 @@ class GildedRose(object):
         self.strategies = {
             "Aged Brie": AgedBrieStrategy(),
             "Backstage passes to a TAFKAL80ETC concert": BackstagePassStrategy(),
-            "Sulfuras, Hand of Ragnaros": SulfurasStrategy()
+            "Sulfuras, Hand of Ragnaros": SulfurasStrategy(),  # Exact name
+            "Conjured": ConjuredStrategy()
         }
         self.default_strategy = NormalItemStrategy()
 

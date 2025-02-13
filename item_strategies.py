@@ -39,4 +39,15 @@ class BackstagePassStrategy(ItemStrategy):
 class SulfurasStrategy(ItemStrategy):
     def update_quality(self, item: Item) -> None:
         # Sulfuras never changes
-        pass
+        # Sulfuras never changes quality and never needs to be sold
+        item.quality = 80  # Always 80
+        # Don't decrease sell_in since it never needs to be sold
+
+class ConjuredStrategy(ItemStrategy):
+    def update_quality(self, item: Item) -> None:
+        # Conjured items degrade twice as fast
+        if item.quality > 0:
+            item.quality = max(0, item.quality - 2)
+            if item.sell_in <= 0:
+                item.quality = max(0, item.quality - 2)
+        item.sell_in = item.sell_in - 1
