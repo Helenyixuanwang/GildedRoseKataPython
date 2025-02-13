@@ -24,3 +24,8 @@ class GildedRose(object):
         for item in self.items:
             strategy = self.strategies.get(item.name, self.default_strategy)
             strategy.update_quality(item)
+
+    # add this method to the GildedRose class:
+    def get_items(self):
+        """Return list of item names"""
+        return [item.name for item in self.items]
